@@ -1,0 +1,146 @@
+body, html {
+  height: auto;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.myself{
+  font-size: 50px;
+  color: #333;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  word-spacing: 5px;
+  margin: 0;
+  padding: 0;
+}
+
+.myself span {
+  color: #538EC5;
+}
+
+.digitacao {
+  font-size: 55px;
+  font-weight: 700;
+  color: black;
+  animation-name: example;
+  animation-duration: 0.5s;     
+  animation-iteration-count: infinite;
+}
+
+.efeito-perfil {
+  animation-name: sample;
+  position: relative;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  /* background: #538EC5; */
+  background: white;
+}
+
+.meu-nome {
+  animation-name: sample2;
+  position: relative;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.efeito-perfil img {
+  height: 250px;
+  width: 250px;
+  margin-top: 25px;
+  margin-left: 25px;
+}
+
+@keyframes sample2 {
+  0%   {left:0px; top:0px;}
+  /* 25%  {left:5px; top:0px;} */
+  50%  {left:0px; top: -3px;}
+  /* 75%  {left:0px; top:10px;} */
+  100% {left:0px; top:0px;}
+}
+
+@keyframes sample {
+  0%   {left:0px; top:0px;}
+  /* 25%  {left:5px; top:0px;} */
+  50%  {left:0px; top:8px;}
+  /* 75%  {left:0px; top:10px;} */
+  100% {left:0px; top:0px;}
+}
+
+@keyframes example {
+  from {background-color: black;}
+  to {background-color: white;}
+}
+
+.parallax {
+  /* The image used */
+  background-image: url('../images/bg-home.png');
+
+  /* Full height */
+  height: auto;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  perspective: 2px;
+  overflow: hidden;
+  
+}
+
+#profissao {
+  display: inline-block;
+}
+
+.apresentacao {
+  background: white;
+  width: 100%;
+  padding: 50px 0;
+  height: auto;
+}
+
+.bg-gradiente {
+  background: rgba(255, 255, 255, 0.9);
+  height: auto;
+}
+
+main {
+  width: 100%;
+  height: auto;
+}
+
+.about {
+  position: absolute;
+  width: 100%;
+  padding: 20px 0;
+  height: auto;
+}
+
+.about p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #555;
+}
+
+.about h1 {
+  color: #555;
+}
+
+.certificacao {
+  margin-top: 500px;
+  color: #555;
+  display: block;
+  background: white;
+  display: block;
+  padding: 20px 0;
+  height: auto;
+}
+
+.certificacao img {
+  height: 100px;
+  width: 100px;
+}

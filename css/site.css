@@ -1,0 +1,12 @@
+body {
+    background-color: #FFF;
+}
+
+main {
+  min-height: 900px;
+}
+
+header {
+  background: #FFF;
+  padding-bottom: 5px;
+}

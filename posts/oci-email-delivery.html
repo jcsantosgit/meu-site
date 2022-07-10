@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Santos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/post.css">
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+            <div class="container">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../index.html">
+                      <img src="../images/logo-meusite.png" alt="logo meu site">
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../index.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="../blog.html">Blog</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="../portifolio.html">Portifólio</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                      </li>                    
+                </ul>
+            </div>
+          </nav>
+    </header>
+
+    <main class="content">
+      
+      <div class="container">
+        
+        <div class="post-capa">
+          <img class="" src="../images/capa-oci-email-delivery.png" alt="Post exemplo">
+          <h1 class="post-title">Configurar o Serviço Email Delivery da OCI e utilizar no Ansible</h1>
+        </div>
+
+        <p>
+          Nesse post mostrarei como configurar e utilizar o serviço de e-mail do provedor Oracle Cloud Infrastructure (Email Delivery) e enviar um e-mail através do Ansible.
+        </p>
+
+        <strong>Requisitos:</strong>
+        <ul>
+          <li>Ter uma conta ativa na OCI</li>
+          <li>Já ter conhecimento prévio da console na OCI</li>
+          <li>Já ter o programa Ansible instalado e funcionando</li>
+          <li>Saber executar playbook no Ansible</li>
+          <li>Ter um domínio ativo (mostrarei como criar um de forma gratuita)</li>
+        </ul>
+
+        <p>
+          O Oracla Cloud Infrastructure Email Delivery é um serviço de e-mail que fornece uma solução para gerenciamento no envio de e-mails com capacidade para altos volumes. Quando ativado em sua conta é possível usar as configurações de SMTP para enviar e-mails como, por exemplo, usando linguagens de programação ou ferramentas de automação (nesse poste veremos como usar no Ansible). Existe uma serie de benefícios quando se contrata esse serviço, mas para conhecer melhor sobre ele sugiro que visite a página de <a href="https://docs.oracle.com/pt-br/iaas/Content/Email/Concepts/overview.htm" target="_blank">Visão Geral do Serviço Email Delivery</a>.
+        </p>
+
+        <p>
+          Antes de iniciarmos a configuração do serviço Email Delivery vamos primeiro criar um domínio utilizando o site <a href="https://noip.com/">noip.com</a>, para em seguida fazermos o passo a passo da configuração do serviço na OCI.          
+        </p>
+
+        <p class="alert alert-warning">
+          Nota: <br> Se você já tem um domínio que pode ser utilizado, então, pode pular essa parte e ir direto para <strong><a href="#configurar-email-delivery" style="color: #856404;">configuração do Email Delivery</a></strong>
+        </p>
+
+        <h3>Criando o Domínio</h3>
+
+        <p>
+          Para criar um domínio no site No-IP é necessário realizar um cadastro prévio. Geralmente o link de cadastro está destacado como um botão e tem o texto Inscrever-se. O processo de cadastro é muito simples. Vamos lá.          
+        </p>
+
+        <p>
+          Tela Inicial com botão de inscrição
+        </p>
+
+        
+        <p>
+          <img src="../images/tela-inicial-noip.png" alt="noip.com">
+        </p>
+        
+        <p>
+          Após clicar no botão temos o formulário de cadastro onde você deve inserir os dados solicitados. Note na imagem abaixo que existe duas opções de criação do domínio: pago e gratuito. O nosso exemplo será para versão gratuita que nos fornece uma espécie de subdomínio. Por exemplo, se eu digitar na caixa Nome do host o domínio meusite e escolher no combo a opção .sytes.net o nome completo ficaria assim: meusite.sytes.net.          
+        </p>
+
+        <p class="mt-4">
+          <img src="../images/crie-suaconta-noip.png" alt="Crie sua conta noip">
+        </p>
+
+        <p>
+          Em seguida você recebera no seu e-mail cadastrado, uma mensagem de confirmação para concluir o processo de cadastro. Quando concluir o cadastro faça o login no site para visualizar o domínio que você escolheu e que foi criado no site. No menu lateral acesse a opção DNS Dinâmico > Pessoal Hostnames e será possível visualizar o domínio que foi criado.          
+        </p>
+
+        <p>
+          <img src="../images/dominio-criado.png" alt="Dominio criado na noip.com">
+        </p>
+
+        <p>
+          Pronto o seu domínio já foi criado! No meu caso criei o domínio jcsantos.ddns.net mostrado na figura acima. Agora vamos partir para configuração do serviço Email Delivery.          
+        </p>
+
+
+        <h3 id="configurar-email-delivery">Configurando o Email Delivery</h3>
+
+        <p>
+          Vamos agora configurar o serviço Email Delivery para depois realizarmos um teste de envio de e-mail usando o Ansible.
+        </p>
+
+        <p>
+          Primeiro vamos criar um Compartment para organizar melhor o nosso novo recurso. Vá para o menu hamburguer e selecione as opções Identity & Security > Compartments. Em seguida clique no botão Create Compartment e preencha os dados do formulário conforme exemplo abaixo.
+        </p>
+
+        <p>
+          <img src="../images/create-compartment.png" alt="create compartment">
+        </p>
+
+        <p>
+          Clique no botão Create Compartment para confirmar a criação do novo objeto. Certo, agora vamos criar o usuário que terá autorização para usar o serviço de e-mail. Clique na opção Users do menu lateral em seguida clique no botão Create User e será apresentado o formulário de preenchimento dos dados do novo usuário.          
+        </p>
+
+        <p>
+          <img src="../images/create-user-oci.png" alt="Create OCI User">
+        </p>
+
+
+        <strong>
+          Abaixo está o script de criação manual das politicas de acesso ao serviço:
+        </strong>
+
+        <p style="text-align: right;">
+          <input type="button" id="btnCopiar" class="btn-copy" onclick="fncCopy()" value="Copiar"/>
+
+          <pre id="codigo" class="codigo">
+
+  Allow group EmailGroupService to manage credentials in compartment training where target.credential.type = 'smtp'
+  Allow group EmailGroupService to manage email-family in compartment training
+  Allow group EmailGroupService to manage suppressions in tenancy
+  Allow group EmailGroupService to manage log-groups in compartment training
+  Allow group EmailGroupService to manage approved-senders in compartment training
+  Allow group EmailGroupService to read log-content in compartment training
+
+          </pre>
+        </p>
+
+        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/tiAEDGe0Goo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>         -->
+
+
+      </div>
+
+    </main>
+    
+
+    <footer>
+      <div class="container">
+        <p style="margin-bottom: -1px;">João Santos</p>
+        <a href="https://www.linkedin.com/in/joaoc-santos/" target="_blank">
+          <i class="fa fa-linkedin-square" style="font-size:36px"></i>
+        </a>
+        <a href="https://github.com/jcsantosgit" target="_blank">
+          <i class="fa fa-github" style="font-size:36px"></i>
+        </a>
+      </div>
+    </footer>
+      
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>  
+    <script>
+      function fncCopy() {
+        
+        var myself = event.target;
+
+        event.target.value = "Copiado...";
+
+        /* Get the text field */
+        var copyText = document.getElementById("codigo");
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.textContent);
+
+        setTimeout(()=>{
+          myself.value = "Copiar"
+        }, 6000);
+      } 
+      
+    </script>    
+</body>
+</html>

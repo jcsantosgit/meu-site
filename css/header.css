@@ -1,0 +1,19 @@
+.nav-link {
+    font-size: 1rem;
+    color: #75A6D2 !important;
+}
+
+  .navbar {
+      /* border-bottom: 8px solid #093366; */
+      box-shadow: -1px 0px 10px 0px rgb(0 0 0 / 12%);
+      border-bottom: 1px solid #f1f1f1;
+  }
+  
+  .active {
+    color: #093366 !important;
+    font-weight: 700;
+  }
+
+  .navbar {
+    background: white !important;
+  }

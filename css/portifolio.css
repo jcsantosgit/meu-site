@@ -1,0 +1,12 @@
+.item-portifolio {
+    margin: 10px 0;
+}
+
+.item-portifolio img {
+    max-width: 100%;
+}
+
+.item-portifolio a {
+    color: #538EC5;
+    font-weight: 500;
+}

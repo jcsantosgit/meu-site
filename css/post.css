@@ -1,0 +1,49 @@
+.post-capa {
+    display: inline-block;
+    font-weight:500;
+    text-decoration: none !important;
+    color: #093366;
+    padding: 5px;
+    border-bottom: 2px solid #538EC5;
+    margin-bottom: 20px;
+  }
+
+  .post-capa img {
+    max-width: 100%;
+  }
+
+  .post-autor img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+
+  .post-autor ul  {
+    display: inline-block; 
+    list-style: none; 
+    height: 50px; 
+    margin: 0; 
+    padding: 0; padding-left: 10px;
+    font-size: 14px;
+  }    
+  
+  .post-title {
+    padding: 10px 0;
+  }
+
+  .codigo {
+    background: #333;
+    color: #5ab4a7;
+  }
+
+  .btn-copy {
+    background: #75A6D2;
+    border: none;
+    color: white;
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .content {
+    margin-top: 60px;
+  }
