@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Santos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/post.css">
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+            <div class="container">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../index.html">
+                      <img src="../images/logo-meusite.png" alt="logo meu site">
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="../blog.html">Blog</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="../portifolio.html">Portifólio</a>
+                      </li>                   
+                </ul>
+            </div>
+          </nav>
+    </header>
+
+    <main class="content">
+      
+      <div class="container">
+        
+        <div class="post-capa">
+          <img class="" src="../images/arquitetura-pa.PNG" alt="Post exemplo">
+          <h1 class="post-title">Projeto Aplicado (PA) - Curso de MBA em Cloud Computing</h1>
+        </div>
+
+        <p>
+          Nesse exemplo de demanda do mercado o problema apresentado está relacionado ao desenvolvimento
+          de aplicalições e também à sustenção dessas mesmas aplicações. 
+        </p>
+
+        <h3>Alguns dos problemas apresentados</h3>
+        <ul>
+          <li>Demora na entrega de novas aplicações ou funcionalidades</li>
+          <li>
+            Instabilidade devido a falhas em aplicações criticas, 
+            como por exemplo, se a aplicação de login fica fora do ar, 
+            não é possível acessar as outras aplicações 
+          </li>
+          <li>
+            Divergência entre tabelas do banco de dados e a aplicação.
+            Por exemplo, quando um formulário recebe um novo campo e o
+            banco de dados não foi atualizado para receber esse novo dado
+            acontece um erro na aplicação
+          </li>
+          <li>Divergência de informações em arquivos de configuração do servidor (web.cofig). As vezes um arquivo em produção está apontando para desenvolvimento ou vice/versa</li>
+        </ul>
+
+      </div>
+
+    </main>
+    
+
+    <footer>
+      <div class="container">
+        <p style="margin-bottom: -1px;">João Santos</p>
+        <a href="https://www.linkedin.com/in/joaoc-santos/" target="_blank">
+          <i class="fa fa-linkedin-square" style="font-size:36px"></i>
+        </a>
+        <a href="https://github.com/jcsantosgit" target="_blank">
+          <i class="fa fa-github" style="font-size:36px"></i>
+        </a>
+      </div>
+    </footer>
+      
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>  
+    <script>
+      function fncCopy() {
+        
+        var myself = event.target;
+
+        event.target.value = "Copiado...";
+
+        /* Get the text field */
+        var copyText = document.getElementById("codigo");
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.textContent);
+
+        setTimeout(()=>{
+          myself.value = "Copiar"
+        }, 6000);
+      } 
+      
+    </script>    
+</body>
+</html>
