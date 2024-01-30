@@ -7,15 +7,21 @@
     <title>João Santos</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="./css/site.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css"> 
     <link rel="stylesheet" href="./css/portifolio.css">
+    <style>
+      .img-portifolio {
+        padding: 50px;
+      }
+    </style>
 </head>
 <body>
     
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+        <nav class="navbar navbar-expand-sm navbar-light bg-primary fixed-top">
             <div class="container">
                 <ul class="navbar-nav">
                   <li class="nav-item">
@@ -27,11 +33,11 @@
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                      <a class="nav-link" href="index.html">Home</a>
+                      <a class="nav-link" href="index.html">Sobre mim</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                       <a class="nav-link" href="blog.html">Blog</a>
-                    </li>                                      
+                    </li>                                       -->
                     <li class="nav-item">
                       <a class="nav-link active" href="portifolio.html">Portifólio</a>
                     </li>                      
@@ -40,86 +46,69 @@
           </nav>
     </header>
 
-    <main style="padding-bottom: 200px;">
+    <main class="container">
 
-        <div class="container mt-5" style="margin-bottom: 100px;">
-
-          <div class="row">
-
-            <div class="col-sx-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="border-top: 1px solid #f1f1f1;margin-top: 20px">
-              <div class="item-portifolio">
-                <div class="row">
-                  <div class="col col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                    <img src="images/arquitetura-pa.PNG" alt="Automação com Ansible">
-                  </div>
-                  <div class="col-sx-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-                    <h2>Projeto Aplicado (PA) - Curso de MBA em Cloud Computing</h2>
-                    <p>
-                      Projeto Aplicado (PA) é um trabalho de conclusão de curso. 
-                      Foi um projeto com exemplo de um problema real 
-                      baseado em uma migração de um ambiente on-premise para nuvem do Azure, 
-                      utilizando automação do processo de desenvolvimento de aplicações (CI/CD no Azure DevOps).
-                      O objetivo do projeto é colocar em prática o conhecimento adquirido durante o curso..
-                    </p>
-                    <a class="float-right" href="portifolios/04-10-2023-pa-igti.html">Continuar lendo >></a>
-                  </div>
-                </div>
-              </div>
-              </a>
-            </div>
-
-          </div>
-
-          <div class="row">
-
-            <div class="col-sx-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 " style="border-top: 1px solid #f1f1f1; margin-top: 20px">
-              <div class="item-portifolio">
-                <div class="row">
-                  <div class="col col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                    <img src="images/meusite-portifolio.png" alt="Automação com Ansible">
-                  </div>
-                  <div class="col-sx-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-                    <h2>Meu Site Pessoal</h2>
-                    <p>
-                      Esse site foi criado por mim e está, ainda, em processo de melhoria.
-                      Está publicado na nuvem da Oracle em uma maquina virtual, o processo 
-                      de deploy está automatizado pelo Jenkins, Docker e GitHub
-                    </p>
-                    <a class="float-right" href="portifolios/04-10-2023-pa-igti.html">Continuar lendo >></a>
-                  </div>
-                </div>
-              </div>
-              </a>
-            </div>
-
-          </div>
-
-          <div class="row">
-
-            <div class="col-sx-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 " style="border-top: 1px solid #f1f1f1; margin-top: 20px">
-              <div class="item-portifolio">
-                <div class="row">
-                  <div class="col col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                    <img src="images/worker-services.jpg" alt="Automação com Ansible">
-                  </div>
-                  <div class="col-sx-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-                    <h2>.NET Core Worker Service (Envio de Email)</h2>
-                    <p>
-                      Projeto Freelance para um cliente especifico.
-                      Criação de uma aplicação em .NET Worker Service para monitorar registros
-                      em uma base de dados e realizar o envio de relatório em PDF
-                      para uma lista de usuário especificos
-                    </p>
-                    <a class="float-right" href="portifolios/04-10-2023-pa-igti.html">Continuar lendo >></a>
-                  </div>
-                </div>
-              </div>
-              </a>
-            </div>
-  
-          </div>
-
+      <div class="projeto">
+        <div class="capa">
+          <img src="images/arquitetura-pa.PNG" alt="Automação com Ansible">
         </div>
+        <div class="descricao">
+          <h4>Migração de App ASP.NET Core para o Microsoft Azure</h4>
+          <p class="resumo">
+            Projeto de migração de uma aplicação para nuvem do Azure.
+            Nesse projeto foi necessário a criação de pipeline no Azure DevOps
+            para automação do processo de integração, testes, aprovação e entrega do software 
+            nos ambientes de desenvolvimento, homologação e produção.
+          </p>
+          <p class="tecnologias">
+            <i class="devicon-azure-plain-wordmark colored"></i>
+            <i class="devicon-dotnetcore-plain colored"></i>            
+          </p>          
+          <div class="opcoes">
+            <a href="#" class="btn btn-secondary">
+              Código fonte <i class="fa fa-github"></i>
+            </a>            
+            <a href="#" class="btn btn-secondary">
+              Ver Projeto <i class="fa fa-external-link"></i>
+            </a>
+            <a class="btn btn-secondary" href="portifolios/04-10-2023-pa-igti.html">
+              Saiba mais <i class="fa fa-bullhorn"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="projeto">
+        <div class="capa">
+          <img src="images/calculator.png" alt="Automação com Ansible">
+        </div>
+        <div class="descricao">
+          <h4>JS Calculadora</h4>
+          <p class="resumo">
+            Calculadora On-line é um projeto que eu disponibilizo na internet e foi feito durante
+            um treinamento do curso de JavaScript Avançado
+          </p>
+          
+          <p class="tecnologias">
+            <i class="devicon-html5-plain-wordmark colored"></i>
+            <i class="devicon-css3-plain-wordmark colored"></i>
+            <i class="devicon-javascript-plain colored"></i>
+          </p>
+
+          <div class="opcoes">
+            <a href="#" class="btn btn-secondary">
+              Código fonte <i class="fa fa-github"></i>
+            </a>            
+            <a href="#" class="btn btn-secondary">
+              Ver Projeto <i class="fa fa-external-link"></i>
+            </a>
+            <a class="btn btn-secondary" href="portifolios/04-10-2023-pa-igti.html">
+              Saiba mais <i class="fa fa-bullhorn"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
     </main>
     
 
